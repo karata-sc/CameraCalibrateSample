@@ -29,7 +29,7 @@ $ rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.035 image:
 ```
 
 ---
-画像処理プログラムへの反映
+キャリブレーションの反映
 ---
 取得したパラメータの行列をサンプルプログラム`camera_calibration.py`の変数に代入する．
 （５行目の`mtx`の値をcamera matrixに，８行目の`dist`の値をdistortionにそれぞれ書き換える．）
