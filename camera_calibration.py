@@ -22,6 +22,10 @@ while(1):
     x, y, w, h = roi
     dst = dst[y:y+h, x:x+w]
 
+    #             
+    # insert your program
+    #
+
     cv2.imshow('original.jpg', frame)
     cv2.imshow('calibrated.jpg', dst)
 
