@@ -6,7 +6,7 @@
 １．必要なパッケージをインストール
 
 ```
-$ sudo  apt install ros-noetic-usb-cam
+$ sudo apt install ros-noetic-usb-cam
 $ sudo apt install ros-noetic-camera-calibration
 $ sudo apt install ros-noetic-image-proc 
 ```
