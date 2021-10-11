@@ -73,7 +73,7 @@ $ mv /tmp/head_camera.yaml ~/.ros/camera_info/head_camera.yaml
 
 ```
 $ cd camera_info
-vi head_camera.yaml
+$ vi head_camera.yaml
 ```
 camera_nameをusb_cam_nodeが起動した時に出るアドレスに変更する
 
