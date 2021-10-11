@@ -35,6 +35,14 @@ $ rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.035 image:
 （５行目の`mtx`の値をcamera matrixに，８行目の`dist`の値をdistortionにそれぞれ書き換える．）
 
 
+
+---
++α ROSのプログラムを使う場合
+---
+
+
+何もしていない状態だと，usb_cam_node起動後は以下のような結果になる．
+
 ```
 $ rosrun usb_cam usb_cam_node
 [ INFO] [1633934648.926744583]: using default calibration URL
@@ -44,10 +52,21 @@ $ rosrun usb_cam usb_cam_node
 [ INFO] [1633934648.927563539]: Starting 'head_camera' (/dev/video0) at 640x480 via mmap (mjpeg) at 30 FPS
 [ WARN] [1633934649.107271801]: unknown control 'focus_auto'
 ```
-指定されたディレクトリ（この場合 ~/.ros/camera_info/head_camera.yaml）にキャリブレーションのファイルを入れることでusb_cam_nodeの起動と一緒にキャリブレーションをしてくれる．
+ここで，指定されたディレクトリ（この場合 `~/.ros/camera_info/head_camera.yaml`）にキャリブレーションのファイルを入れるとusb_cam_nodeの起動と一緒にキャリブレーションをしてくれる．
 
-これを使うにはパラメータのファイルが必要．カメラキャリブレーションのプログラムを実行した後，CALIBLATEの下のSAVEボタンを押すと/tmpにアーカイブファイルがcalibrationdata.tar.gzという名前で保存される．
-以降の操作↓
+この場合，プログラムの書き換えは必要ない．
+
+
+１．カメラキャリブレーションのプログラムを実行
+
+２．CALIBLATEの下のSAVEボタンを押す
+　　
+  
+![](https://i.imgur.com/tyERsgD.png)
+
+
+３．/tmpにアーカイブファイルがcalibrationdata.tar.gzという名前で保存されるので展開
+
 ```
 $ cd /tmp
 $ tar zxvf calibrationdata.tar.gz
@@ -55,24 +74,28 @@ $ mv ost.txt ost.ini
 $ rosrun camera_calibration_parsers convert ost.ini head_camera.yaml
 ```
 
-ここで，~/.ros/camera_infoが存在しない場合は作っておく．
+４．ファイルの移動
 
 ```
 $ cd ~/.ros
 $ mkdir camera_info
 $ mv /tmp/head_camera.yaml ~/.ros/camera_info/head_camera.yaml
 ```
-
+５．ファイルの編集
 ```
 $ cd camera_info
 $ vi head_camera.yaml
 ```
-camera_nameをusb_cam_nodeが起動した時に出るアドレスに変更する
+`camera_name: head_camera`に書き換え
 
-自分の場合はcamera_name: narrow_stereoになっていたのでcamera_name: head_cameraに書き換えた
-
-
-
+usb_cam_nodeを立ち上げてこんな感じに出てきたらOK
+```
+$ rosrun usb_cam usb_cam_node
+[ INFO] [1633936483.612211995]: using default calibration URL
+[ INFO] [1633936483.612859061]: camera calibration URL: file:///home/owner/.ros/camera_info/head_camera.yaml
+[ INFO] [1633936483.613419474]: Starting 'head_camera' (/dev/video0) at 640x480 via mmap (mjpeg) at 30 FPS
+[ WARN] [1633936483.790395559]: unknown control 'focus_auto'
+```
 
 ---
 参考資料
