@@ -80,6 +80,6 @@ camera_nameをusb_cam_nodeが起動した時に出るアドレスに変更する
 自分の場合はcamera_name: narrow_stereoになっていたのでcamera_name: head_cameraに書き換えた
 
 
-https://researchmap.jp/blogs/blog_entries/view/96639/ba1ff72ca68727e9e2b828cbf8b30e9e?frame_id=461924
+* [中込 広幸 (Hiroyuki Nakagomi) - 研究ブログ - researchmap](https://researchmap.jp/blogs/blog_entries/view/96639/ba1ff72ca68727e9e2b828cbf8b30e9e?frame_id=461924)
 
 
