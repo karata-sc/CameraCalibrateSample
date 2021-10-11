@@ -35,14 +35,6 @@ $ rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.035 image:
 （５行目の`mtx`の値をcamera matrixに，８行目の`dist`の値をdistortionにそれぞれ書き換える．）
 
 
----
-参考資料
----
-* [カメラキャリブレーション — OpenCV-Python Tutorials 1 documentation](http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_calib3d/py_calibration/py_calibration.html)
-
-
-
-
 ```
 $ rosrun usb_cam usb_cam_node
 [ INFO] [1633934648.926744583]: using default calibration URL
@@ -79,6 +71,13 @@ camera_nameをusb_cam_nodeが起動した時に出るアドレスに変更する
 
 自分の場合はcamera_name: narrow_stereoになっていたのでcamera_name: head_cameraに書き換えた
 
+
+
+
+---
+参考資料
+---
+* [カメラキャリブレーション — OpenCV-Python Tutorials 1 documentation](http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_calib3d/py_calibration/py_calibration.html)
 
 * [中込 広幸 (Hiroyuki Nakagomi) - 研究ブログ - researchmap](https://researchmap.jp/blogs/blog_entries/view/96639/ba1ff72ca68727e9e2b828cbf8b30e9e?frame_id=461924)
 
