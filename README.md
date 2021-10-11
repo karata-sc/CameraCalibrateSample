@@ -1,10 +1,9 @@
 # CameraCalibrateSample
 ---
-ROSのプログラムを使わない場合
+パラメータの取得
 ---
 
-1. 必要なパッケージをインストール
-
+１．必要なパッケージをインストール
 
 ```
 $ sudo apt install ros-noetic-usb-cam
@@ -12,28 +11,26 @@ $ sudo apt install ros-noetic-camera-calibration
 $ sudo apt install ros-noetic-image-proc 
 ```
 
-2. roscoreを実行
-
+２．roscoreを実行
 
 ```
 $ roscore
 ```
 
-3. カメラノード立ち上げ
+３．カメラノード立ち上げ
 
 ```
 $ rosrun usb_cam usb_cam_node
 ```
-
-4. キャリブレーションプログラムの実行
+４．キャリブレーションプログラムの実行
 
 ```
 $ rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.035 image:=/usb_cam/image_raw
 ```
 
-5. キャリブレーションの反映
-
-
+---
+キャリブレーションの反映
+---
 取得したパラメータの行列をサンプルプログラム`camera_calibration.py`の変数に代入する．
 （５行目の`mtx`の値をcamera matrixに，８行目の`dist`の値をdistortionにそれぞれ書き換える．）
 
@@ -60,17 +57,15 @@ $ rosrun usb_cam usb_cam_node
 この場合，プログラムの書き換えは必要ない．
 
 
+１．カメラキャリブレーションのプログラムを実行
 
-
-1. カメラキャリブレーションのプログラムを実行
-
-2. CALIBLATEの下のSAVEボタンを押す
+２．CALIBLATEの下のSAVEボタンを押す
 　　
   
 ![](https://i.imgur.com/tyERsgD.png)
 
 
-3. /tmpにアーカイブファイルがcalibrationdata.tar.gzという名前で保存されるので展開
+３．/tmpにアーカイブファイルがcalibrationdata.tar.gzという名前で保存されるので展開
 
 ```
 $ cd /tmp
@@ -79,19 +74,19 @@ $ mv ost.txt ost.ini
 $ rosrun camera_calibration_parsers convert ost.ini head_camera.yaml
 ```
 
-4. ファイルの移動
+４．ファイルの移動
 
 ```
 $ cd ~/.ros
 $ mkdir camera_info
 $ mv /tmp/head_camera.yaml ~/.ros/camera_info/head_camera.yaml
 ```
-5. ファイルの編集
+５．ファイルの編集
 ```
 $ cd camera_info
 $ vi head_camera.yaml
 ```
-`camera_name: head_camera`と書き換え
+`camera_name: head_camera`に書き換え
 
 usb_cam_nodeを立ち上げてこんな感じに出てきたらOK
 ```
