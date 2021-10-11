@@ -68,6 +68,7 @@ $ rosrun camera_calibration_parsers convert ost.ini head_camera.yaml
 ```
 $ cd ~/.ros
 $ mkdir camera_info
+$ cd camera_info
 $ mv /tmp/head_camera.yaml ~/.ros/camera_info/head_camera.yaml
 ```
 
